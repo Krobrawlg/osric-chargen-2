@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CharContextProvider } from './Store/char-context';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <CharContextProvider>
     <App />
-  </React.StrictMode>,
+  </CharContextProvider>,
   document.getElementById('root')
 );
 

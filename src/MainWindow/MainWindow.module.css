@@ -1,0 +1,25 @@
+.h1 {
+  font-size: 62px;
+}
+
+.mainbox {
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  background-color: black;
+  color: goldenrod;
+  width: 500px;
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+}
+
+.header {
+  z-index: 3;
+  justify-content: center;
+}
+
+.header.logo {
+  padding: 5em;
+}

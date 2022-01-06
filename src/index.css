@@ -5,9 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:black;
+  /* background-image: url(./img/spider.jpg); */
+  /* background-size: cover;
+  background-repeat: no-repeat; */
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .app {
+  background-image: url(./img/spider.jpg);
+} */
+
+.img {
+position:fixed;
+display: inline-block;
+height:100vh;
+z-index: 1;
+opacity: 0.75;
+}
+
+ .img.left{
+  left:0;
+}
+
+ .img.right{
+  right: 0;
+  transform: scaleX(-1);
+}
+
+button{
+  border-color: goldenrod;
+  color: goldenrod;
+  background-color: black;
+  margin-top: 3vh;
+  margin-left: 1.5vh;
+  margin-right: 1.5vh;
+  height: fit-content;
+  width: 20vh;
+  border-radius: 10px;
+  border-width: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+li{color:white}

@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import MainWindow from './MainWindow/MainWindow';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <MainWindow />
+      <img
+        className="img left"
+        src="/salamander.jpg"
+        alt="samurai_stabs_monstrous_salamander"
+      />
+      <img
+        className="img right"
+        src="/firesmite.jpg"
+        alt="ghost_samurai_smites_murderer"
+      />
     </div>
   );
 }
