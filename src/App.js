@@ -1,10 +1,9 @@
-import './App.css';
-import MainWindow from './MainWindow/MainWindow';
+import MainWindow from "./MainWindow/MainWindow";
 
 function App() {
   return (
     <div className="App">
-     <MainWindow />
+      <MainWindow />
       <img
         className="img left"
         src="/salamander.jpg"

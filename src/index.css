@@ -1,19 +1,18 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:black;
+  background-color: black;
   /* background-image: url(./img/spider.jpg); */
   /* background-size: cover;
   background-repeat: no-repeat; */
-
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -22,23 +21,23 @@ code {
 } */
 
 .img {
-position:fixed;
-display: inline-block;
-height:100vh;
-z-index: 1;
-opacity: 0.75;
+  position: fixed;
+  display: inline-block;
+  height: 100vh;
+  z-index: 1;
+  opacity: 0.75;
 }
 
- .img.left{
-  left:0;
+.img.left {
+  left: 0;
 }
 
- .img.right{
+.img.right {
   right: 0;
   transform: scaleX(-1);
 }
 
-button{
+button {
   border-color: goldenrod;
   color: goldenrod;
   background-color: black;
@@ -54,4 +53,6 @@ button{
   font-weight: bold;
 }
 
-li{color:white}
+li {
+  color: white;
+}

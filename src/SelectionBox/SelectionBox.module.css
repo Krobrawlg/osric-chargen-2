@@ -1,0 +1,15 @@
+.selection-box {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+
+  background: goldenrod;
+  color: black;
+  height: fit-content;
+  width: fit-content;
+  margin: 0.5em;
+  border-radius: 0.5em;
+}

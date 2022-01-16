@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 
-
 const CharContext = React.createContext({
   generateStats: () => {},
+  getRaces: () => {},
   numberOfDice: 3,
   DRHandler3d6: () => {},
   DRHandler4d6: () => {},
-  stats: [
-    {}
-  ],
+  stats: [{}],
   charClass: null,
   race: null,
-  selectionWindowOpen: false
+  selectionWindowOpen: false,
 });
 
- export const CharContextProvider = (props) => {
+export const CharContextProvider = (props) => {
   const [stats, setStats] = useState([]);
   const [numberOfDice, setNumberOfDice] = useState(3);
   const [removeLowestRoll, setRemoveLowestRoll] = useState(false);
@@ -22,70 +20,69 @@ const CharContext = React.createContext({
   //   const [race, setRace] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [selectionWindowOpen, setSelectionWindowOpen] = useState(false);
-  
 
-
-  const rollDie = ( maxNumOnDie) => {
+  const rollDie = (maxNumOnDie) => {
     const minNumOnDie = 1;
-    const dieRoll =(Math.floor(Math.random() * maxNumOnDie + minNumOnDie))
+    const dieRoll = Math.floor(Math.random() * maxNumOnDie + minNumOnDie);
     return dieRoll;
-    }
-  
-
-
+  };
 
   const addRolls = (numberOfDice, maxNumOnDie) => {
     let rollsArray = [];
-    for (let rollCount = 0; rollCount < numberOfDice; rollCount++){
+    for (let rollCount = 0; rollCount < numberOfDice; rollCount++) {
       rollsArray.push(rollDie(maxNumOnDie));
     }
-    if (removeLowestRoll){
+    if (removeLowestRoll) {
+      const numberOfDiceToRemove = 1;
       const lowestRoll = Math.min(...rollsArray);
       const lowestRollIndex = rollsArray.indexOf(lowestRoll);
-      rollsArray.splice(lowestRollIndex, 1);
+      rollsArray.splice(lowestRollIndex, numberOfDiceToRemove);
       console.log(lowestRoll);
     }
     console.log(rollsArray);
-    const rollsSum = rollsArray.reduce((total, currentRoll) => total + currentRoll);
+    const rollsSum = rollsArray.reduce(
+      (total, currentRoll) => total + currentRoll
+    );
     return rollsSum;
-  }
-  
+  };
 
-  
-  const generateStats =  () => {
-
-
+  const generateStats = () => {
     const stats = [
-      {name: 'STR', value: 0},
-      {name: 'DEX', value: 0},
-      {name: 'CON', value: 0},
-      {name: 'INT', value: 0},
-      {name: 'WIS', value: 0},
-      {name: 'CHA', value: 0}
-    ]
-        for(const statObject of stats){
-          const maxNumD6 = 6; 
-          statObject.value = addRolls(numberOfDice, maxNumD6)
-        }
-
-        setStats(stats);
-        console.log(stats);
-        setSelectionWindowOpen(true);
-
+      { name: "STR", value: 0 },
+      { name: "DEX", value: 0 },
+      { name: "CON", value: 0 },
+      { name: "INT", value: 0 },
+      { name: "WIS", value: 0 },
+      { name: "CHA", value: 0 },
+    ];
+    for (const statObject of stats) {
+      const maxNumD6 = 6;
+      statObject.value = addRolls(numberOfDice, maxNumD6);
     }
 
+    setStats(stats);
+    console.log(stats);
+    setSelectionWindowOpen(true);
+  };
 
-
-    
-
-  
-  function DRHandler3d6(){
-    setNumberOfDice(3);
+  async function getRaces() {
+    const raceRequestOptions = {
+      method: "GET",
+    };
+    const raceData = await fetch("http://localhost:3000/races");
+    const raceList = await raceData.json();
+    console.log(raceList);
+    return raceList;
   }
 
-  function DRHandler4d6(){
-      setNumberOfDice(4);
-      setRemoveLowestRoll(true);
+  function DRHandler3d6() {
+    setNumberOfDice(3);
+    setRemoveLowestRoll(false);
+  }
+
+  function DRHandler4d6() {
+    setNumberOfDice(4);
+    setRemoveLowestRoll(true);
   }
 
   return (
@@ -102,7 +99,8 @@ const CharContext = React.createContext({
         setIsLoading: setIsLoading,
         selectionWindowOpen: selectionWindowOpen,
         setSelectionWindowOpen: setSelectionWindowOpen,
-        setRemoveLowestRoll: setRemoveLowestRoll
+        setRemoveLowestRoll: setRemoveLowestRoll,
+        getRaces: getRaces,
       }}
     >
       {props.children}
@@ -111,7 +109,6 @@ const CharContext = React.createContext({
 };
 
 export default CharContext;
-
 
 // const hardcoreMode = 3;
 // const diceRoll = 4;
@@ -130,9 +127,9 @@ export default CharContext;
 // }
 // else {
 //   a = statLists.map((statList) => {
-  
+
 //   const statListCopy = [...statList];
-  
+
 //     const lowest = Math.min(...statListCopy);
 //     const lowestIndex = statListCopy.indexOf(lowest);
 //     //probably a more efficient way for this
@@ -148,4 +145,3 @@ export default CharContext;
 
 // console.log(a);
 // console.log(statArray);
-

@@ -1,19 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 
 import CharContext from "../Store/char-context";
 
 import classes from "./StatGenerator.module.css";
 
 const StatGenerator = () => {
-    const ctx = useContext(CharContext);
+  const ctx = useContext(CharContext);
 
-   const genStatHandler = (event) =>{
-     event.preventDefault();
-     ctx.generateStats();
-   }
+  const genStatHandler = (event) => {
+    event.preventDefault();
+    ctx.generateStats();
+  };
 
-//review: stat-generator..statGenerator?
-const statGenClasses = ctx.selectionWindowOpen ? `${classes.statGenerator} ${classes.hidden}` : classes.statGenerator
+  //review: stat-generator..statGenerator?
+  const statGenClasses = ctx.selectionWindowOpen
+    ? `${classes.statGenerator} ${classes.hidden}`
+    : classes.statGenerator;
   return (
     <div className={statGenClasses}>
       <h1>Generate Your Stats</h1>
@@ -26,7 +28,7 @@ const statGenClasses = ctx.selectionWindowOpen ? `${classes.statGenerator} ${cla
             value="3d6"
             onClick={ctx.DRHandler3d6}
           />
-          <label >3d6</label>
+          <label>3d6</label>
         </div>
 
         <div>
@@ -48,8 +50,8 @@ const statGenClasses = ctx.selectionWindowOpen ? `${classes.statGenerator} ${cla
           <input type="radio" name="stats" value="custom" />
           <label>Custom</label>
         </div>
-       {!ctx.isLoading && <button>Roll up a character</button>}
-       {ctx.isLoading && <p>Rolling...</p>}
+        {!ctx.isLoading && <button>Roll up a character</button>}
+        {ctx.isLoading && <p>Rolling...</p>}
       </form>
     </div>
   );

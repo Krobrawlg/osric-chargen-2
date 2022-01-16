@@ -1,25 +1,24 @@
-.mainbox{
-    left:0;
-    right: 0;
-    margin: auto;
-    height:100%;
-    background-color:black;
-    color:goldenrod;
-    width: 66vh;
-    z-index: 2;
-    position: absolute;
-  }
+.mainbox {
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+  background-color: black;
+  color: goldenrod;
+  width: 66vh;
+  z-index: 2;
+  position: absolute;
+}
 
-  .header{
-    padding:1em; 
-    z-index: 3;
-  
-  }
-  
-  .header.logo{
-    padding:5em;
-  }
-  
-  .hidden{
-      display: none;
-  }
+.header {
+  padding: 1em;
+  z-index: 3;
+}
+
+.header.logo {
+  padding: 5em;
+}
+
+.hidden {
+  display: none;
+}
