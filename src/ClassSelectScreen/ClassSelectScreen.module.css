@@ -1,5 +1,5 @@
 .stat-block,
-.race-list {
+.class-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

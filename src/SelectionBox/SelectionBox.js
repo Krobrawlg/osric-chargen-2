@@ -1,19 +1,33 @@
+import { useContext, useEffect } from "react";
+
+import CharContext from "../Store/char-context";
+
 import classes from "./SelectionBox.module.css";
 
 const SelectionBox = (props) => {
-  function capitalizeBoxLabel(label) {
-    let splitLabel = label.split(/\s|-/);
-    console.log(splitLabel);
-    for (let word = 0; word < splitLabel.length; word++) {
-      splitLabel[word] =
-        splitLabel[word][0].toUpperCase() + splitLabel[word].slice(1);
-    }
-    const capitalizedLabel = splitLabel.join("-");
-    return capitalizedLabel;
+  const ctx = useContext(CharContext);
+
+  function selectionHandler() {
+    props.selectFunction(props.selection);
   }
+
+  useEffect(() => {
+    console.log(ctx.job);
+  }, [ctx.job]);
+
   return (
     <div className={classes["selection-box"]}>
-      <h2>{capitalizeBoxLabel(props.name)}</h2>
+      <input
+        className={classes["radio-input"]}
+        type="radio"
+        name={props.radioName}
+        value={props.selection.name}
+        id={props.selection.name}
+        onChange={selectionHandler}
+      />
+      <label for={props.selection.name} className={classes.label}>
+        {ctx.capitalizeString(props.selection.name)}
+      </label>
     </div>
   );
 };

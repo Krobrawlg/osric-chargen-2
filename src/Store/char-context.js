@@ -2,18 +2,21 @@ import React, { useState } from "react";
 
 const CharContext = React.createContext({
   generateStats: () => {},
-  getRaces: () => {},
   numberOfDice: 3,
-  DRHandler3d6: () => {},
-  DRHandler4d6: () => {},
   stats: [{}],
   charClass: null,
   race: null,
+  setRace: () => {},
+  job: null,
+  setJob: () => {},
   selectionWindowOpen: false,
+  capitalizeString: () => {},
 });
 
 export const CharContextProvider = (props) => {
   const [stats, setStats] = useState([]);
+  const [race, setRace] = useState(null);
+  const [job, setJob] = useState(null);
   const [numberOfDice, setNumberOfDice] = useState(3);
   const [removeLowestRoll, setRemoveLowestRoll] = useState(false);
   //   const [charClass, setCharClass] = useState(null);
@@ -65,24 +68,15 @@ export const CharContextProvider = (props) => {
     setSelectionWindowOpen(true);
   };
 
-  async function getRaces() {
-    const raceRequestOptions = {
-      method: "GET",
-    };
-    const raceData = await fetch("http://localhost:3000/races");
-    const raceList = await raceData.json();
-    console.log(raceList);
-    return raceList;
-  }
+  function capitalizeString(string) {
+    let splitStrings = string.split(/\s|-/);
+    console.log(splitStrings);
 
-  function DRHandler3d6() {
-    setNumberOfDice(3);
-    setRemoveLowestRoll(false);
-  }
-
-  function DRHandler4d6() {
-    setNumberOfDice(4);
-    setRemoveLowestRoll(true);
+    return splitStrings
+      .map((word) => {
+        return word[0].toUpperCase() + word.slice(1);
+      })
+      .join("-");
   }
 
   return (
@@ -93,14 +87,16 @@ export const CharContextProvider = (props) => {
         // race: race,
         generateStats: generateStats,
         setNumberOfDice: setNumberOfDice,
-        DRHandler3d6: DRHandler3d6,
-        DRHandler4d6: DRHandler4d6,
         isLoading: isLoading,
         setIsLoading: setIsLoading,
         selectionWindowOpen: selectionWindowOpen,
         setSelectionWindowOpen: setSelectionWindowOpen,
         setRemoveLowestRoll: setRemoveLowestRoll,
-        getRaces: getRaces,
+        race: race,
+        setRace: setRace,
+        job: job,
+        setJob: setJob,
+        capitalizeString: capitalizeString,
       }}
     >
       {props.children}

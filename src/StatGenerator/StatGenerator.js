@@ -12,6 +12,15 @@ const StatGenerator = () => {
     ctx.generateStats();
   };
 
+  function generateNormal() {
+    ctx.setNumberOfDice(3);
+    ctx.setRemoveLowestRoll(false);
+  }
+
+  function generateHero() {
+    ctx.setNumberOfDice(4);
+    ctx.setRemoveLowestRoll(true);
+  }
   //review: stat-generator..statGenerator?
   const statGenClasses = ctx.selectionWindowOpen
     ? `${classes.statGenerator} ${classes.hidden}`
@@ -26,7 +35,7 @@ const StatGenerator = () => {
             type="radio"
             name="dice-roll"
             value="3d6"
-            onClick={ctx.DRHandler3d6}
+            onClick={generateNormal}
           />
           <label>3d6</label>
         </div>
@@ -36,7 +45,7 @@ const StatGenerator = () => {
             type="radio"
             name="dice-roll"
             value="4d6"
-            onClick={ctx.DRHandler4d6}
+            onClick={generateHero}
           />
           <label>4d6 drop lowest</label>
         </div>
@@ -50,7 +59,9 @@ const StatGenerator = () => {
           <input type="radio" name="stats" value="custom" />
           <label>Custom</label>
         </div>
-        {!ctx.isLoading && <button>Roll up a character</button>}
+        {!ctx.isLoading && (
+          <button className={classes.button}>Roll up a character</button>
+        )}
         {ctx.isLoading && <p>Rolling...</p>}
       </form>
     </div>
