@@ -34,3 +34,24 @@
 .label:focus {
   background-color: yellow;
 }
+
+.button {
+  border-color: goldenrod;
+  color: goldenrod;
+  background-color: black;
+  margin-top: auto;
+  margin-bottom: 3vh;
+  margin-right: 1.5vh;
+  height: fit-content;
+  width: 20vh;
+  border-radius: 10px;
+  border-width: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.button:hover {
+  border-color: yellow;
+  color: yellow;
+}

@@ -11,6 +11,7 @@
 
   "classes": [
     { "id": 1, "name": "assassin" },
+    { "id": 11, "name": "barbarian" },
     { "id": 2, "name": "bard" },
     { "id": 3, "name": "cleric" },
     { "id": 4, "name": "druid" },

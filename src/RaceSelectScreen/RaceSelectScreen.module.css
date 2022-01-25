@@ -1,14 +1,24 @@
-.stat-block,
 .race-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.stat-box {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
-  margin-right: 1em;
-  margin-left: 1em;
+.button {
+  border-color: goldenrod;
+  color: goldenrod;
+  background-color: black;
+  margin: 0;
+  height: 3em;
+  width: 20vh;
+  border-radius: 10px;
+  border-width: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.button:hover {
+  border-color: yellow;
+  color: yellow;
 }

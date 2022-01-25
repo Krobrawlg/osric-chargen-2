@@ -7,8 +7,9 @@ import useGetData from "../hooks/use-get-data";
 import CharContext from "../Store/char-context";
 
 import SelectionBox from "../SelectionBox/SelectionBox";
+import SubStatBlock from "../SubStatBlock/SubStatBlock";
 
-const ClassSelectScreen = () => {
+const ClassSelectScreen = (props) => {
   const [jobs, setJobs] = useState([]);
 
   const { sendRequest: getJobs } = useGetData(
@@ -42,18 +43,19 @@ const ClassSelectScreen = () => {
   ));
 
   //refactor this into a component
-  const statBlock = ctx.stats.map((stat) => (
-    <div className={classes["stat-box"]} key={stat.name}>
-      <h2>{stat.name}</h2>
-      <p>{stat.value}</p>
-    </div>
-  ));
+  //   const statBlock = ctx.stats.map((stat) => (
+  //     <div className={classes["stat-box"]} key={stat.name}>
+  //       <h2>{stat.name}</h2>
+  //       <p>{stat.value}</p>
+  //     </div>
+  //   ));
 
   return (
     <>
       <h1>{headerLabel}</h1>
+      {props.shopButton}
       <form className={classes["class-list"]}>{classListContent}</form>
-      <div className={classes["stat-block"]}>{statBlock}</div>
+      <SubStatBlock />
     </>
   );
 };

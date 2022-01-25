@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 
 import SelectionBox from "../SelectionBox/SelectionBox";
+import SubStatBlock from "../SubStatBlock/SubStatBlock";
 
 import CharContext from "../Store/char-context";
 
@@ -8,7 +9,7 @@ import classes from "./RaceSelectScreen.module.css";
 
 import useGetData from "../hooks/use-get-data";
 
-const RaceSelectScreen = () => {
+const RaceSelectScreen = (props) => {
   //get list of races
   const [races, setRaces] = useState([]);
 
@@ -54,18 +55,20 @@ const RaceSelectScreen = () => {
   ));
 
   //any way to refactor this?
-  const statBlock = ctx.stats.map((stat) => (
-    <div className={classes["stat-box"]} key={stat.name}>
-      <h2>{stat.name}</h2>
-      <p>{stat.value}</p>
-    </div>
-  ));
+  // const statBlock = ctx.stats.map((stat) => (
+  //   <div className={classes["stat-box"]} key={stat.name}>
+  //     <h2>{stat.name}</h2>
+  //     <p>{stat.value}</p>
+  //   </div>
+  // ));
 
   return (
     <>
       <h1>{headerLabel}</h1>
+      {props.shopButton}
       <form className={classes["race-list"]}>{raceListContent}</form>
-      <div className={classes["stat-block"]}>{statBlock}</div>
+      <SubStatBlock />
+      {/* <div className={classes["stat-block"]}>{statBlock}</div> */}
     </>
   );
 };
