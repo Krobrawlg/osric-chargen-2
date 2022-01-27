@@ -6,6 +6,8 @@ import RaceSelectScreen from "../RaceSelectScreen/RaceSelectScreen";
 import ClassSelectScreen from "../ClassSelectScreen/ClassSelecScreen";
 import Shops from "../Shops/Shops";
 
+import Button from "../UI/Button/Button";
+
 import classes from "./CharSelection.module.css";
 
 const CharSelector = () => {
@@ -38,9 +40,7 @@ const CharSelector = () => {
   ));
 
   const shopButton = ctx.race && ctx.job && (
-    <button className={classes.button} onClick={openShopsHandler}>
-      Buy Equipment
-    </button>
+    <Button label="Buy Equipment" clickHandler={openShopsHandler} />
   );
   return (
     <>
@@ -53,12 +53,8 @@ const CharSelector = () => {
           <div className={classes["stat-block-list"]}>{statBlocks}</div>
         </>
       )}
-      <button className={classes.button} onClick={openRaceWindow}>
-        Select Race
-      </button>
-      <button className={classes.button} onClick={openClassWindow}>
-        Select Class
-      </button>
+      <Button label="Select Race" clickHandler={openRaceWindow} />
+      <Button label="Select Class" clickHandler={openClassWindow} />
     </>
   );
 };

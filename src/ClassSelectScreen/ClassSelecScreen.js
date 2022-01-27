@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 
 import classes from "./ClassSelectScreen.module.css";
 
-import useGetData from "../hooks/use-get-data";
+import useFetchData from "../hooks/use-fetch-data";
 
 import CharContext from "../Store/char-context";
 
@@ -12,10 +12,7 @@ import SubStatBlock from "../SubStatBlock/SubStatBlock";
 const ClassSelectScreen = (props) => {
   const [jobs, setJobs] = useState([]);
 
-  const { sendRequest: getJobs } = useGetData(
-    "http://localhost:3000/classes",
-    setJobs
-  );
+  const { sendRequest: getJobs } = useFetchData("classes", setJobs);
 
   useEffect(() => {
     getJobs();

@@ -7,7 +7,7 @@ import CharContext from "../Store/char-context";
 
 import classes from "./RaceSelectScreen.module.css";
 
-import useGetData from "../hooks/use-get-data";
+import useFetchData from "../hooks/use-fetch-data";
 
 const RaceSelectScreen = (props) => {
   //get list of races
@@ -23,10 +23,7 @@ const RaceSelectScreen = (props) => {
   //   getRaceList();
   // }, []);
 
-  const { sendRequest: getRaces } = useGetData(
-    "http://localhost:3000/races",
-    setRaces
-  );
+  const { sendRequest: getRaces } = useFetchData("races", setRaces);
 
   useEffect(() => {
     getRaces();
@@ -48,7 +45,7 @@ const RaceSelectScreen = (props) => {
     <SelectionBox
       selection={race}
       // name={race.name}
-      key={race.id}
+      key={race._id}
       selectFunction={ctx.setRace}
       radioName="races"
     />

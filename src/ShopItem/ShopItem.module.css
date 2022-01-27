@@ -1,0 +1,15 @@
+.button {
+  color: goldenrod;
+  border-color: goldenrod;
+  background-color: black;
+  border-radius: 15px;
+}
+
+.button:hover {
+  color: yellow;
+  border-color: yellow;
+}
+
+.input {
+  width: 30%;
+}

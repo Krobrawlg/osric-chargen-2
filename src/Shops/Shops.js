@@ -7,6 +7,7 @@ import Armourer from "../Armourer/Armourer";
 import Weaponsmith from "../Weaponsmith/Weaponsmith";
 import SubStatBlock from "../SubStatBlock/SubStatBlock";
 
+import Button from "../UI/Button/Button";
 const Shops = () => {
   const [generalStoreOpen, setGeneralStoreOpen] = useState(false);
   const [armourerOpen, setArmourerOpen] = useState(false);
@@ -35,9 +36,9 @@ const Shops = () => {
       {generalStoreOpen && <GeneralStore />}
       {armourerOpen && <Armourer />}
       {weaponsmithOpen && <Weaponsmith />}
-      <button onClick={openGeneralHandler}>General Store</button>
-      <button onClick={openArmourerHandler}>Armourer</button>
-      <button onClick={openWeaponsmithHandler}>Weaponsmith</button>
+      <Button label="General Store" clickHandler={openGeneralHandler} />
+      <Button label="Armourer" clickHandler={openArmourerHandler} />
+      <Button label="Weaponsmith" clickHandler={openWeaponsmithHandler} />
       <SubStatBlock />
     </>
   );

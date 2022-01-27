@@ -11,12 +11,18 @@ const CharContext = React.createContext({
   setJob: () => {},
   selectionWindowOpen: false,
   capitalizeString: () => {},
+  gold: 0,
+  setGold: () => {},
+  inventory: [],
+  setInventory: () => {},
 });
 
 export const CharContextProvider = (props) => {
   const [stats, setStats] = useState([]);
   const [race, setRace] = useState(null);
   const [job, setJob] = useState(null);
+  const [gold, setGold] = useState(0);
+  const [inventory, setInventory] = useState([]);
   const [numberOfDice, setNumberOfDice] = useState(3);
   const [removeLowestRoll, setRemoveLowestRoll] = useState(false);
   //   const [charClass, setCharClass] = useState(null);
@@ -82,21 +88,25 @@ export const CharContextProvider = (props) => {
   return (
     <CharContext.Provider
       value={{
-        stats: stats,
+        stats,
         // charClass: charClass,
         // race: race,
-        generateStats: generateStats,
-        setNumberOfDice: setNumberOfDice,
-        isLoading: isLoading,
-        setIsLoading: setIsLoading,
-        selectionWindowOpen: selectionWindowOpen,
-        setSelectionWindowOpen: setSelectionWindowOpen,
-        setRemoveLowestRoll: setRemoveLowestRoll,
-        race: race,
-        setRace: setRace,
-        job: job,
-        setJob: setJob,
-        capitalizeString: capitalizeString,
+        generateStats,
+        setNumberOfDice,
+        isLoading,
+        setIsLoading,
+        selectionWindowOpen,
+        setSelectionWindowOpen,
+        setRemoveLowestRoll,
+        race,
+        setRace,
+        job,
+        setJob,
+        capitalizeString,
+        gold,
+        setGold,
+        inventory,
+        setInventory,
       }}
     >
       {props.children}

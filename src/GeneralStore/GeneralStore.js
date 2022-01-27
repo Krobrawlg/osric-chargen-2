@@ -1,30 +1,108 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 
-import SelectionBox from "../SelectionBox/SelectionBox";
+import useFetchData from "../hooks/use-fetch-data";
+
+import classes from "./GeneralStore.module.css";
+
+import Button from "../UI/Button/Button";
+import ShopItem from "../ShopItem/ShopItem";
+
+import CharContext from "../Store/char-context";
 
 const GeneralStore = () => {
   const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+
+  const addGpValue = useCallback((itemArray) => {
+    itemArray.forEach((item) => {
+      const splitCost = item.cost.split(" ");
+      const coinUnit = splitCost[1];
+      const numOfCoins = splitCost[0];
+      let changeRate;
+      if (coinUnit === "gp") {
+        changeRate = 1;
+      }
+      if (coinUnit === "sp") {
+        changeRate = 0.1;
+      }
+      if (coinUnit === "cp") {
+        changeRate = 0.01;
+      }
+      item.gpValue = numOfCoins * changeRate;
+      console.log(item.gpValue);
+    });
+    setItems(itemArray);
+  }, []);
+
+  const { sendRequest: getItems } = useFetchData("generalStore", addGpValue);
 
   useEffect(() => {
-    async function getItems() {
-      const response = await fetch("http://localhost:4000/generalStore");
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}}`;
-        console.log(message);
-        return;
-      }
-      const shopItems = await response.json();
-      console.log(shopItems);
-      console.log(Array.isArray(shopItems));
-      setItems(shopItems);
-    }
     getItems();
-    setIsLoading(false);
-  }, [setIsLoading]);
+  }, [getItems]);
 
-  const shopContents = items.map((item) => <p key={item._id}>{item.Item}</p>);
-  return <div className="item-list">{!isLoading && shopContents}</div>;
+  const ctx = useContext(CharContext);
+  function generateGold() {
+    let gold;
+    if (ctx.class === "cleric" || "druid") {
+      gold = 180;
+    } else if (ctx.class === "fighter" || "ranger" || "paladin") {
+      gold = 200;
+    } else if (ctx.class === "magic-user" || "illusionist") {
+      gold = 80;
+    } else {
+      gold = 120;
+    }
+    ctx.setGold(gold);
+  }
+
+  let goldDisplay;
+  if (!ctx.gold) {
+    goldDisplay = <Button label="Generate Gold" clickHandler={generateGold} />;
+  } else {
+    goldDisplay = <h2>You have {ctx.gold} GP</h2>;
+  }
+
+  const shopContents = items.map((item) => (
+    //make this into a component to manage values individually
+    <ShopItem
+      id={item._id}
+      name={item.Item}
+      cost={item.cost}
+      weight={item.weight}
+    />
+    // <tr key={item._id}>
+    //   <td>{item.Item}</td>
+    //   <td>{item.cost}</td>
+    //   <td>{item.weight}</td>
+    //   <td>
+    //     <input type="number" value={enteredNumber} onChange={onChangeHandler} />
+    //   </td>
+    //   <td>
+    //     <button>Buy</button>
+    //   </td>
+    //   <td>{item.gpValue}</td>
+    // </tr>
+    // <ItemBox key={item._id} itemName={item.Item} itemCost={item.cost} />
+  ));
+  return (
+    <div className={classes.background}>
+      <h1>General Store</h1>
+      {goldDisplay}
+      <div className={classes["item-list"]}>
+        <table className={classes["item-table"]}>
+          <thead>
+            <tr className={classes.beader}>
+              <th className={classes.header}>Item</th>
+              <th className={classes.header}>Cost</th>
+              <th className={classes.header}>Weight</th>
+              <th className={classes.header}>Number</th>
+              <th className={classes.header}></th>
+            </tr>
+          </thead>
+          <tbody>{shopContents}</tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default GeneralStore;
