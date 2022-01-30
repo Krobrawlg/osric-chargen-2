@@ -1,15 +1,30 @@
 .button {
   color: goldenrod;
   border-color: goldenrod;
+  border-width: 5px;
   background-color: black;
-  border-radius: 15px;
+  border-radius: 10px;
+  width: 5em;
+  height: 2.5em;
+  font: inherit;
 }
 
 .button:hover {
   color: yellow;
   border-color: yellow;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .input {
   width: 30%;
+}
+
+.row {
+  height: 2.5em;
+}
+.row:hover {
+  background-color: goldenrod;
+  color: black;
+  font-weight: bold;
 }

@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import classes from "./Shops.module.css";
-
 import GeneralStore from "../GeneralStore/GeneralStore";
 import Armourer from "../Armourer/Armourer";
 import Weaponsmith from "../Weaponsmith/Weaponsmith";
@@ -19,6 +17,10 @@ const Shops = () => {
     setWeaponsmithOpen(false);
   }
 
+  function exitGeneralStore() {
+    setGeneralStoreOpen(false);
+  }
+
   function openArmourerHandler() {
     setArmourerOpen(true);
     setGeneralStoreOpen(false);
@@ -33,7 +35,7 @@ const Shops = () => {
   return (
     //make button into a component (to simplify styling)
     <>
-      {generalStoreOpen && <GeneralStore />}
+      {generalStoreOpen && <GeneralStore exit={exitGeneralStore} />}
       {armourerOpen && <Armourer />}
       {weaponsmithOpen && <Weaponsmith />}
       <Button label="General Store" clickHandler={openGeneralHandler} />

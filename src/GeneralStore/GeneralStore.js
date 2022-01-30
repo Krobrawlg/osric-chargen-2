@@ -6,10 +6,12 @@ import classes from "./GeneralStore.module.css";
 
 import Button from "../UI/Button/Button";
 import ShopItem from "../ShopItem/ShopItem";
+import Inventory from "../Inventory/Inventory";
 
 import CharContext from "../Store/char-context";
+import InvContext from "../Store/inv-context";
 
-const GeneralStore = () => {
+const GeneralStore = (props) => {
   const [items, setItems] = useState([]);
 
   const addGpValue = useCallback((itemArray) => {
@@ -40,6 +42,7 @@ const GeneralStore = () => {
   }, [getItems]);
 
   const ctx = useContext(CharContext);
+  const invCtx = useContext(InvContext);
   function generateGold() {
     let gold;
     if (ctx.class === "cleric" || "druid") {
@@ -51,23 +54,31 @@ const GeneralStore = () => {
     } else {
       gold = 120;
     }
-    ctx.setGold(gold);
+    invCtx.setGold(gold);
   }
 
   let goldDisplay;
-  if (!ctx.gold) {
-    goldDisplay = <Button label="Generate Gold" clickHandler={generateGold} />;
+  if (!invCtx.gold) {
+    goldDisplay = (
+      <Button
+        className={classes.button}
+        label="Generate Gold"
+        clickHandler={generateGold}
+      />
+    );
   } else {
-    goldDisplay = <h2>You have {ctx.gold} GP</h2>;
+    goldDisplay = <h2>You have {invCtx.gold} GP</h2>;
   }
 
   const shopContents = items.map((item) => (
     //make this into a component to manage values individually
     <ShopItem
-      id={item._id}
+      key={item._id}
       name={item.Item}
       cost={item.cost}
       weight={item.weight}
+      gpValue={item.gpValue}
+      hasButton={true}
     />
     // <tr key={item._id}>
     //   <td>{item.Item}</td>
@@ -87,20 +98,30 @@ const GeneralStore = () => {
     <div className={classes.background}>
       <h1>General Store</h1>
       {goldDisplay}
-      <div className={classes["item-list"]}>
-        <table className={classes["item-table"]}>
-          <thead>
-            <tr className={classes.beader}>
-              <th className={classes.header}>Item</th>
-              <th className={classes.header}>Cost</th>
-              <th className={classes.header}>Weight</th>
-              <th className={classes.header}>Number</th>
-              <th className={classes.header}></th>
-            </tr>
-          </thead>
-          <tbody>{shopContents}</tbody>
-        </table>
+      <div className={classes["item-list-container"]}>
+        <div className={classes["shop-item-list"]}>
+          <table className={classes["item-table"]}>
+            <thead>
+              <h3>Wares</h3>
+              <tr className={classes.header}>
+                <th className={classes.header}>Item</th>
+                <th className={classes.header}>Cost</th>
+                <th className={classes.header}>Weight</th>
+                <th className={classes.header}>Number</th>
+                <th className={classes.header}></th>
+              </tr>
+            </thead>
+            <tbody>{shopContents}</tbody>
+          </table>
+        </div>
+        <Inventory />
       </div>
+
+      <footer>
+        <button onClick={props.exit} className={classes["footer-button"]}>
+          Exit
+        </button>
+      </footer>
     </div>
   );
 };

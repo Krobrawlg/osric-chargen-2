@@ -1,0 +1,15 @@
+.item-list {
+  /* display: flexbox;
+    flex: 1; */
+
+  width: 50%;
+  height: 30em;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.item-table {
+  color: goldenrod;
+  margin-bottom: 50px;
+  width: 100%;
+}
