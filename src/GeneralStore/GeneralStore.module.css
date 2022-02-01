@@ -27,12 +27,15 @@
   color: goldenrod;
 }
 
-.header {
+.table-header {
   position: sticky;
   top: 0;
   background-color: black;
   font-size: large;
   font-weight: bold;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .footer-button {
@@ -55,4 +58,8 @@
 
 .button {
   display: block;
+}
+
+.tr {
+  margin-top: 0;
 }

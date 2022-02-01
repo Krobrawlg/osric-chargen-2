@@ -101,14 +101,22 @@ const GeneralStore = (props) => {
       <div className={classes["item-list-container"]}>
         <div className={classes["shop-item-list"]}>
           <table className={classes["item-table"]}>
-            <thead>
-              <h3>Wares</h3>
-              <tr className={classes.header}>
-                <th className={classes.header}>Item</th>
-                <th className={classes.header}>Cost</th>
-                <th className={classes.header}>Weight</th>
-                <th className={classes.header}>Number</th>
-                <th className={classes.header}></th>
+            <thead className={classes["table-header"]}>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>
+                  <h3 className={classes.h3}>Wares</h3>
+                </th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr className={classes.tr}>
+                <th>Item</th>
+                <th>Cost</th>
+                <th>Weight</th>
+                <th>Number</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>{shopContents}</tbody>

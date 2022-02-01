@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  box-sizing: border-box;
   background: goldenrod;
   color: black;
   height: 65px;
@@ -10,6 +10,20 @@
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
+}
+
+.stat-box:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.stat-box:focus {
+  background-color: black;
+
+  color: yellow;
+  border: yellow;
+  border-style: inset;
+  border-width: 0.25em;
 }
 
 .stat-box h2 {

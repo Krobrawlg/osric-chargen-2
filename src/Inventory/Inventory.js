@@ -11,14 +11,22 @@ const Inventory = (props) => {
   return (
     <div className={classes["item-list"]}>
       <table className={classes["item-table"]}>
-        <thead>
-          <h3>Your Inventory</h3>
-          <tr className={classes.header}>
-            <th className={classes.header}>Item</th>
-            <th className={classes.header}>Cost</th>
-            <th className={classes.header}>Weight</th>
-            <th className={classes.header}>Number</th>
-            <th className={classes.header}></th>
+        <thead className={classes["table-header"]}>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>
+              <h3 className={classes.h3}>Inventory</h3>
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>Item</th>
+            <th>Cost</th>
+            <th>Weight</th>
+            <th>Number</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{invCtx.inventoryContents}</tbody>

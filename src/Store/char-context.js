@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const CharContext = React.createContext({
   generateStats: () => {},
@@ -15,6 +15,7 @@ const CharContext = React.createContext({
   setGold: () => {},
   inventory: [],
   setInventory: () => {},
+  statSwapper: () => {},
 });
 
 export const CharContextProvider = (props) => {
@@ -46,9 +47,7 @@ export const CharContextProvider = (props) => {
       const lowestRoll = Math.min(...rollsArray);
       const lowestRollIndex = rollsArray.indexOf(lowestRoll);
       rollsArray.splice(lowestRollIndex, numberOfDiceToRemove);
-      console.log(lowestRoll);
     }
-    console.log(rollsArray);
     const rollsSum = rollsArray.reduce(
       (total, currentRoll) => total + currentRoll
     );
@@ -56,7 +55,7 @@ export const CharContextProvider = (props) => {
   };
 
   const generateStats = () => {
-    const stats = [
+    const statInfo = [
       { name: "STR", value: 0 },
       { name: "DEX", value: 0 },
       { name: "CON", value: 0 },
@@ -64,13 +63,12 @@ export const CharContextProvider = (props) => {
       { name: "WIS", value: 0 },
       { name: "CHA", value: 0 },
     ];
-    for (const statObject of stats) {
+    for (const statObject of statInfo) {
       const maxNumD6 = 6;
       statObject.value = addRolls(numberOfDice, maxNumD6);
     }
 
-    setStats(stats);
-    console.log(stats);
+    setStats(statInfo);
     setSelectionWindowOpen(true);
   };
 
@@ -84,6 +82,52 @@ export const CharContextProvider = (props) => {
       })
       .join("-");
   }
+
+  const [originStatSelected, setOriginStatSelected] = useState(false);
+  const [originStatValue, setOriginStatValue] = useState();
+  const [originStatName, setOriginStatName] = useState();
+  // let originStat;
+  // let targetStat;
+
+  useEffect(() => {
+    console.log(`This is the origin ${originStatValue}`);
+  }, [originStatValue, stats]);
+
+  const statSwapper = (inputStat) => {
+    console.log(inputStat);
+    console.log(inputStat.value);
+    // const statToSwap = stats.filter((stat) => stat.name === statName)
+
+    // let statToSwap = statArrayCopy.filter(
+    //   (stat) => stat.name === statCopy.name
+    // );
+    if (!originStatSelected) {
+      setOriginStatValue(inputStat.value);
+      setOriginStatName(inputStat.name);
+      setOriginStatSelected(true);
+      return;
+    } else {
+      setStats(
+        [...stats].map((stat) => {
+          if (stat.name === inputStat.name) {
+            return {
+              ...stat,
+              value: originStatValue,
+            };
+          } else if (stat.name === originStatName) {
+            return {
+              ...stat,
+              value: inputStat.value,
+            };
+          } else {
+            return stat;
+          }
+        })
+      );
+
+      setOriginStatSelected(false);
+    }
+  };
 
   return (
     <CharContext.Provider
@@ -107,6 +151,7 @@ export const CharContextProvider = (props) => {
         setGold,
         inventory,
         setInventory,
+        statSwapper,
       }}
     >
       {props.children}
@@ -115,39 +160,3 @@ export const CharContextProvider = (props) => {
 };
 
 export default CharContext;
-
-// const hardcoreMode = 3;
-// const diceRoll = 4;
-
-// const statLists = [
-//   [1, 2, 3, 4],
-//   [1, 2, 3, 4],
-//   [1, 2, 3, 4],
-//   [1, 2, 3, 4],
-//   [1, 2, 3, 4],
-//   [1, 2, 3, 4]
-// ]
-// let a;
-// if (hardcoreMode === diceRoll){
-// a = statLists;
-// }
-// else {
-//   a = statLists.map((statList) => {
-
-//   const statListCopy = [...statList];
-
-//     const lowest = Math.min(...statListCopy);
-//     const lowestIndex = statListCopy.indexOf(lowest);
-//     //probably a more efficient way for this
-//     statListCopy.splice(lowestIndex, 1);
-//     return statListCopy;
-
-//   })
-// }
-
-// const calcSum = (accumulator, curr) => accumulator + curr;
-
-// const statArray = a.map((x) => x.reduce(calcSum, 0));
-
-// console.log(a);
-// console.log(statArray);
