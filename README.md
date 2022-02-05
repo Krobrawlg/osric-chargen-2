@@ -3,6 +3,7 @@
 A character generator based on the fantasy tabletop role-playing game OSRIC.
 
 Using the Generator:
+--------------------------------------------------------------
 
 First, select your desired character generation settings.
 The terms 3d6 and 4d6 are taken from tabletop roleplaying to refer to dice rolls.
@@ -19,23 +20,29 @@ A higher number means a character is more endowed with a particular attribute.
 In this program, there are two "dice roll" settings to choose from.
 
 3d6:
+
 This is the hardcore setting, resulting in regular joes with more "average" attributes.
 
-4d6 drop lowest:
+4d6 Drop Lowest:
+
 Generate 4 numbers from 1 to 6, take away the lowest number, and add the remaining 3 numbers together.
 This method results in stronger-than-average characters.
 
-Stat distribution
+Stat Distribution
+--------------------------------------------------------------
 
 Down the line:
+
 Stats are generated in order STR, DEX, CON, INT, WIS, CHA, and cannot be swapped around.
 This method compels you to create a character based on the stats you roll.
 
 Customize:
+
 Once the stats are rolled in order, you can click on two stats to switch their values around.
 This allows you to make the kind of character you want to play.
 
 License Information:
+--------------------------------------------------------------
 
 This project uses rules from the OSRIC™ System (Oldschool System Reference and Index Compilation™). The OSRIC™ system text may be found at http://www.knights-n-knaves.com/osric. The OSRIC™ text is copyright of Stuart Marshall. "OSRIC™" and "Oldschool System Reference and Index Compilation™" are trademarks of Stuart Marshall and Matthew Finch and may be used only in accordance with the OSRIC™ license.
 
