@@ -26,9 +26,13 @@ In this program, there are two "dice roll" settings to choose from.
 
 3d6:
 
+"Roll three six-sided dice."
+
 This is the hardcore setting, resulting in regular joes with more "average" attributes.
 
 4d6 Drop Lowest:
+
+"Roll four six-sided dice, remove the lowest roll."
 
 Generate 4 numbers from 1 to 6, take away the lowest number, and add the remaining 3 numbers together.
 This method results in stronger-than-average characters.
