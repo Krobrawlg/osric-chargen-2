@@ -2,6 +2,11 @@
 
 A character generator based on the fantasy tabletop role-playing game OSRIC.
 
+## Built With
+*React
+*Express.js
+*MongoDB Atlas
+
 Using the Generator:
 --------------------------------------------------------------
 
@@ -38,7 +43,7 @@ This method compels you to create a character based on the stats you roll.
 
 Customize:
 
-Once the stats are rolled in order, you can click on two stats to switch their values around.
+Once the stats are rolled in order, you can click on two stats to switch their values.
 This allows you to make the kind of character you want to play.
 
 License Information:
