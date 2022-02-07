@@ -25,7 +25,7 @@ const SelectionBox = (props) => {
         id={props.selection.name}
         onChange={selectionHandler}
       />
-      <label for={props.selection.name} className={classes.label}>
+      <label htmlFor={props.selection.name} className={classes.label}>
         {ctx.capitalizeString(props.selection.name)}
       </label>
     </div>

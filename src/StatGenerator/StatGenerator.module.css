@@ -44,3 +44,40 @@
   color: yellow;
   cursor: pointer;
 }
+
+.radio-box .radio-input {
+  display: none;
+}
+
+.radio-box .radio-input:checked + .label {
+  background-color: yellow;
+}
+
+.label {
+  font: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+
+  background: goldenrod;
+  color: black;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 0.5em;
+}
+
+.label:hover {
+  background: yellow;
+  cursor: pointer;
+}
+
+.label:focus {
+  background-color: yellow;
+}

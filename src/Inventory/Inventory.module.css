@@ -1,7 +1,4 @@
 .item-list {
-  /* display: flexbox;
-    flex: 1; */
-
   width: 50%;
   height: 30em;
   overflow-y: auto;
@@ -18,4 +15,12 @@
   position: sticky;
   top: 0;
   background: black;
+}
+
+.weight-display {
+  position: absolute;
+  bottom: 4em;
+  right: 2em;
+  background-color: black;
+  width: fit-content;
 }

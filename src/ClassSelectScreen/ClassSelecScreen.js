@@ -33,7 +33,7 @@ const ClassSelectScreen = (props) => {
   const classListContent = jobs.map((job) => (
     <SelectionBox
       selection={job}
-      key={job.id}
+      key={job._id}
       selectFunction={ctx.setJob}
       radioName="class"
     />

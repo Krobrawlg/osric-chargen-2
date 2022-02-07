@@ -21,7 +21,15 @@ const StatGenerator = () => {
     ctx.setNumberOfDice(4);
     ctx.setRemoveLowestRoll(true);
   }
-  //review: stat-generator..statGenerator?
+
+  function customizeHandler() {
+    ctx.setCustomizeCharacter(true);
+  }
+
+  function downTheLineHandler() {
+    ctx.setCustomizeCharacter(false);
+  }
+
   const statGenClasses = ctx.selectionWindowOpen
     ? `${classes.statGenerator} ${classes.hidden}`
     : classes.statGenerator;
@@ -30,37 +38,63 @@ const StatGenerator = () => {
       <h1>Generate Your Stats</h1>
       <h2>Dice Roll</h2>
       <form onSubmit={genStatHandler}>
-        <div>
+        <div className={classes["radio-box"]}>
           <input
+            className={classes["radio-input"]}
             type="radio"
             name="dice-roll"
             value="3d6"
+            id="3d6"
             onClick={generateNormal}
           />
-          <label>3d6</label>
+          <label className={classes.label} htmlFor="3d6">
+            3d6
+          </label>
         </div>
 
-        <div>
+        <div className={classes["radio-box"]}>
           <input
+            className={classes["radio-input"]}
             type="radio"
             name="dice-roll"
             value="4d6"
+            id="4d6"
             onClick={generateHero}
           />
-          <label>4d6 drop lowest</label>
+          <label className={classes.label} htmlFor="4d6">
+            4d6 Drop Lowest
+          </label>
         </div>
 
         <h2>Stat Distribution</h2>
-        <div>
-          <input type="radio" name="stats" value="in-order" />
-          <label>Down the line</label>
+        <div className={classes["radio-box"]}>
+          <input
+            className={classes["radio-input"]}
+            type="radio"
+            name="stats"
+            value="in-order"
+            id="in-order"
+            onClick={downTheLineHandler}
+          />
+          <label className={classes.label} htmlFor="in-order">
+            Down the Line
+          </label>
         </div>
-        <div>
-          <input type="radio" name="stats" value="custom" />
-          <label>Custom</label>
+        <div className={classes["radio-box"]}>
+          <input
+            className={classes["radio-input"]}
+            type="radio"
+            name="stats"
+            value="custom"
+            id="custom"
+            onClick={customizeHandler}
+          />
+          <label className={classes.label} htmlFor="custom">
+            Custom
+          </label>
         </div>
         {!ctx.isLoading && (
-          <button className={classes.button}>Roll up a character</button>
+          <button className={classes.button}>Roll up a Character</button>
         )}
         {ctx.isLoading && <p>Rolling...</p>}
       </form>

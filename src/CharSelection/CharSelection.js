@@ -35,32 +35,6 @@ const CharSelector = () => {
     setRaceSelectOpen(false);
   }
 
-  // const [originStatSelected, setOriginStatSelected] = useState(false);
-  // const [originStat, setOriginStat] = useState(null);
-  // const [targetStat, setTargetStat] = useState(null);
-
-  // function statSwapper(statName) {
-  //   const statToSwap = ctx.stats.filter((stat) => stat.name === statName);
-  //   if (!originStatSelected) {
-  //     setOriginStat(statToSwap);
-  //     setOriginStatSelected(true);
-  //     return;
-  //   } else {
-  //     setTargetStat(statToSwap);
-  //     ctx.stats.forEach((stat) => {
-  //       if (stat.name === originStat.name) {
-  //         stat.value = targetStat.value;
-  //       }
-  //       ctx.stats.forEach((stat) => {
-  //         if (stat.name === targetStat.name) {
-  //           stat.value = originStat.value;
-  //         }
-  //       });
-  //     });
-  //   }
-  // }
-  // const[statBlocks, setStatBlocks] = useState([]);
-
   let statBlocks;
 
   statBlocks = ctx.stats.map((stat) => {
@@ -70,8 +44,6 @@ const CharSelector = () => {
       <StatBox stat={stat} key={stat.name} functionOnClick={ctx.statSwapper} />
     ));
   });
-
-  // }, [ctx.stats]);
 
   const shopButton = ctx.race && ctx.job && (
     <Button label="Buy Equipment" clickHandler={openShopsHandler} />
@@ -84,6 +56,7 @@ const CharSelector = () => {
       {!raceSelectOpen && !classSelectOpen && !shopsOpen && (
         <>
           <h1>Stats</h1>
+          {ctx.customizeCharacter && <h2>Click to Swap</h2>}
           <div className={classes["stat-block-list"]}>{statBlocks}</div>
         </>
       )}

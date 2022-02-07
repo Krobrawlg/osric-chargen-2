@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const CharContext = React.createContext({
   generateStats: () => {},
@@ -16,6 +16,9 @@ const CharContext = React.createContext({
   inventory: [],
   setInventory: () => {},
   statSwapper: () => {},
+  originStatSelected: false,
+  customizeCharacter: false,
+  setCustomizeCharacter: () => [],
 });
 
 export const CharContextProvider = (props) => {
@@ -26,11 +29,10 @@ export const CharContextProvider = (props) => {
   const [inventory, setInventory] = useState([]);
   const [numberOfDice, setNumberOfDice] = useState(3);
   const [removeLowestRoll, setRemoveLowestRoll] = useState(false);
-  //   const [charClass, setCharClass] = useState(null);
-  //   const [race, setRace] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [selectionWindowOpen, setSelectionWindowOpen] = useState(false);
 
+  //re-factor die management into seperate hook
   const rollDie = (maxNumOnDie) => {
     const minNumOnDie = 1;
     const dieRoll = Math.floor(Math.random() * maxNumOnDie + minNumOnDie);
@@ -74,7 +76,6 @@ export const CharContextProvider = (props) => {
 
   function capitalizeString(string) {
     let splitStrings = string.split(/\s|-/);
-    console.log(splitStrings);
 
     return splitStrings
       .map((word) => {
@@ -86,21 +87,8 @@ export const CharContextProvider = (props) => {
   const [originStatSelected, setOriginStatSelected] = useState(false);
   const [originStatValue, setOriginStatValue] = useState();
   const [originStatName, setOriginStatName] = useState();
-  // let originStat;
-  // let targetStat;
-
-  useEffect(() => {
-    console.log(`This is the origin ${originStatValue}`);
-  }, [originStatValue, stats]);
 
   const statSwapper = (inputStat) => {
-    console.log(inputStat);
-    console.log(inputStat.value);
-    // const statToSwap = stats.filter((stat) => stat.name === statName)
-
-    // let statToSwap = statArrayCopy.filter(
-    //   (stat) => stat.name === statCopy.name
-    // );
     if (!originStatSelected) {
       setOriginStatValue(inputStat.value);
       setOriginStatName(inputStat.name);
@@ -126,15 +114,16 @@ export const CharContextProvider = (props) => {
       );
 
       setOriginStatSelected(false);
+      document.activeElement.blur();
     }
   };
+
+  const [customizeCharacter, setCustomizeCharacter] = useState(false);
 
   return (
     <CharContext.Provider
       value={{
         stats,
-        // charClass: charClass,
-        // race: race,
         generateStats,
         setNumberOfDice,
         isLoading,
@@ -152,6 +141,9 @@ export const CharContextProvider = (props) => {
         inventory,
         setInventory,
         statSwapper,
+        originStatSelected,
+        customizeCharacter,
+        setCustomizeCharacter,
       }}
     >
       {props.children}

@@ -5,46 +5,66 @@ import classes from "./ShopItem.module.css";
 import InvContext from "../Store/inv-context";
 
 const ShopItem = (props) => {
-  const [numOfItems, setNumOfItems] = useState(1);
-  //   const [inventoryItem, setInventoryItem] = useState({
-  //     name: props.name,
-  //     cost: props.cost,
-  //     weight: props.weight,
-  //     gpValue: props.gpValue,
-  //   });
-
-  function onChangeHandler(event) {
-    setNumOfItems(event.target.value);
-  }
+  const [number, setNumber] = useState(1);
 
   const invCtx = useContext(InvContext);
 
   const item = {
-    name: props.name,
-    cost: props.cost,
-    weight: props.weight,
-    gpValue: props.gpValue,
-    number: numOfItems,
+    id: props.item.id,
+    name: props.item.name,
+    cost: props.item.cost,
+    weight: props.item.weight,
+    gpValue: props.item.gpValue,
+    number: number,
   };
 
-  const clickHandler = () => {
-    invCtx.addItemToCart(item);
+  function changeHandler(event) {
+    setNumber(event.target.value);
+    console.log(item.number);
+  }
+
+  function clickHandler() {
     console.log(item);
-  };
+    invCtx.addItem(item);
+  }
+
+  function removeHandler() {
+    invCtx.removeItem(item);
+  }
+
+  function addHandler() {
+    invCtx.addItem({ ...item, number: 1 });
+  }
+
   return (
-    <tr key={props.id} className={classes.row}>
-      <td>{props.name}</td>
-      <td>{props.cost}</td>
-      <td>{props.weight}</td>
-      <td>
-        <input
-          className={classes.input}
-          type="number"
-          value={numOfItems}
-          onChange={onChangeHandler}
-          min={1}
-        />
-      </td>
+    <tr className={classes.row}>
+      <td>{item.name}</td>
+      <td>{item.cost}</td>
+      <td>{item.weight}</td>
+      {props.inInventory ? (
+        <>
+          <td>
+            <button onClick={removeHandler}>-</button>
+          </td>
+          <td>{props.numOfItems}</td>
+          <td>
+            <button onClick={addHandler}>+</button>
+          </td>
+        </>
+      ) : (
+        <>
+          <td>
+            <input
+              className={classes.input}
+              type="number"
+              min={1}
+              onChange={changeHandler}
+              value={number}
+            />
+          </td>
+          <td />
+        </>
+      )}
       <td>
         {props.hasButton && (
           <button className={classes.button} onClick={clickHandler}>

@@ -61,5 +61,10 @@
 }
 
 .tr {
-  margin-top: 0;
+  top: 0;
+}
+
+.empty-th {
+  background-color: black;
+  width: 100%;
 }

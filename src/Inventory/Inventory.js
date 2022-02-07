@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-// import ShopItem from "../ShopItem/ShopItem.js";
+import ShopItem from "../ShopItem/ShopItem.js";
 
 import InvContext from "../Store/inv-context";
 
@@ -8,6 +8,29 @@ import classes from "./Inventory.module.css";
 
 const Inventory = (props) => {
   const invCtx = useContext(InvContext);
+
+  function removeItemHandler(id) {
+    invCtx.removeItem(id);
+  }
+
+  function addItemHandler(item) {
+    invCtx.addItem({ ...item, number: 1 });
+  }
+  let inventoryContents = invCtx.inventory.map((item) => {
+    return (
+      <ShopItem
+        item={item}
+        key={item.id}
+        numOfItems={item.number}
+        hasButton={false}
+        inInventory={true}
+        removeItem={removeItemHandler.bind(null, item.id)}
+        addItem={addItemHandler.bind(null, item)}
+      />
+    );
+  });
+
+  let totalWeight = invCtx.totalWeight;
   return (
     <div className={classes["item-list"]}>
       <table className={classes["item-table"]}>
@@ -25,16 +48,16 @@ const Inventory = (props) => {
             <th>Item</th>
             <th>Cost</th>
             <th>Weight</th>
+            <th />
             <th>Number</th>
-            <th></th>
+            <th />
           </tr>
         </thead>
-        <tbody>{invCtx.inventoryContents}</tbody>
+        <tbody>{inventoryContents}</tbody>
       </table>
+      <h3 className={classes["weight-display"]}>Total Weight: {totalWeight}</h3>
     </div>
   );
 };
 
 export default Inventory;
-
-//Assignments to the 'inventoryContents' variable from inside React Hook useEffect will be lost after each render. To preserve the value over time, store it in a useRef Hook and keep the mutable value in the '.current' property. Otherwise, you can move this variable directly inside useEffect.
