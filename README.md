@@ -2,7 +2,7 @@
 
 A character generator based on the fantasy tabletop role-playing game OSRIC.
 
-## Built With
+## Built With:
 - React
 - Express.js
 - MongoDB Atlas
