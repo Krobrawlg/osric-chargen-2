@@ -1,16 +1,16 @@
-import { useEffect, useState, useContext, useCallback } from "react";
-
-import useFetchData from "../hooks/use-fetch-data";
+import { useState, useCallback, useEffect, useContext } from "react";
 
 import classes from "./GeneralStore.module.css";
 
-import ShopItem from "../ShopItem/ShopItem";
+import ShopDisplay from "../ShopDisplay/ShopDisplay";
 import Inventory from "../Inventory/Inventory";
 
 import InvContext from "../Store/inv-context";
 
+import useFetchData from "../hooks/use-fetch-data";
+
 const GeneralStore = (props) => {
-  const [items, setItems] = useState([]);
+  const [generalStoreItems, setGeneralStoreItems] = useState([]);
 
   const modifyItemArray = useCallback((itemArray) => {
     const modifiedItemArray = itemArray.map((item) => {
@@ -27,15 +27,33 @@ const GeneralStore = (props) => {
       if (coinUnit === "cp") {
         changeRate = 0.01;
       }
+
+      let trueWeight;
+
+      const weightValue = item.weight;
+      const weightString = weightValue.toString();
+      const splitWeight = weightString.split(" ");
+      const splitValue = splitWeight[0];
+      if (splitValue === "1/2") {
+        trueWeight = 0.5;
+      } else if (!isNaN(splitValue)) {
+        trueWeight = Number(splitValue);
+      } else {
+        trueWeight = 0;
+      }
+
+      console.log(trueWeight);
+
       return {
         id: item._id,
         name: item.Item,
         cost: item.cost,
         weight: item.weight,
         gpValue: numOfCoins * changeRate,
+        trueWeight: trueWeight,
       };
     });
-    setItems(modifiedItemArray);
+    setGeneralStoreItems(modifiedItemArray);
   }, []);
 
   const { sendRequest: getItems } = useFetchData(
@@ -49,43 +67,12 @@ const GeneralStore = (props) => {
 
   const invCtx = useContext(InvContext);
 
-  useCallback(() => {
-    invCtx.generateGold();
-  }, [invCtx]);
-
-  const shopContents = items.map((item) => (
-    <ShopItem key={item.id} item={item} hasButton={true} inInventory={false} />
-  ));
   return (
     <div className={classes.background}>
       <h1>General Store</h1>
-      <h2>You have {Math.round(invCtx.gold * 100) / 100} GP</h2>{" "}
+      <h2>You have {Math.round(invCtx.gold * 100) / 100} GP</h2>
       <div className={classes["item-list-container"]}>
-        <div className={classes["shop-item-list"]}>
-          <table className={classes["item-table"]}>
-            <thead className={classes["table-header"]}>
-              <tr>
-                <th></th>
-                <th></th>
-                <th>
-                  <h3 className={classes.h3}>Wares</h3>
-                </th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-              <tr className={classes.tr}>
-                <th>Item</th>
-                <th>Cost</th>
-                <th>Weight</th>
-                <th>Number</th>
-                <th></th>
-                <th className={classes["empty-th"]}></th>
-              </tr>
-            </thead>
-            <tbody>{shopContents}</tbody>
-          </table>
-        </div>
+        <ShopDisplay exit={props.exit} items={generalStoreItems} />
         <Inventory />
       </div>
       <footer>

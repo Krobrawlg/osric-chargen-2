@@ -1,16 +1,17 @@
-.background {
+/* .background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: black;
-}
+} */
 
-.item-list-container {
+/* .item-list-container {
   display: flex;
-}
-/* .shop-item-list {
+} */
+
+.shop-item-list {
   display: flexbox;
   flex: 1;
   width: 50%;
@@ -66,4 +67,4 @@
 .empty-th {
   background-color: black;
   width: 100%;
-} */
+}

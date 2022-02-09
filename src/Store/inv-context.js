@@ -54,13 +54,15 @@ const inventoryReducer = (state, action) => {
     const transactionPrice = action.item.gpValue * action.item.number;
     const goldAfterTransaction = state.remainingGold - transactionPrice;
     let updatedWeight;
-    const itemHasWeight = !isNaN(action.item.weight);
-    if (itemHasWeight) {
-      updatedWeight =
-        state.totalWeight + action.item.weight * action.item.number;
-    } else {
-      updatedWeight = state.totalWeight;
-    }
+    // const itemHasWeight = !isNaN(action.item.weight);
+    // if (itemHasWeight) {
+    console.log(`true weight ${action.item.trueWeight}`);
+    updatedWeight =
+      state.totalWeight + action.item.trueWeight * action.item.number;
+    // } else {
+    //   updatedWeight = state.totalWeight;
+    // }
+    console.log(updatedWeight);
     if (!(goldAfterTransaction >= 0)) {
       console.log("need more gold");
       return {
@@ -101,7 +103,7 @@ const inventoryReducer = (state, action) => {
     const existingItem = state.inventory[existingItemIndex];
     console.log(`existingItem ${existingItem}`);
     const goldAfterTransaction = state.remainingGold + action.item.gpValue;
-    const updatedWeight = state.totalWeight - action.item.weight;
+    const updatedWeight = state.totalWeight - action.item.trueWeight;
     if (existingItem.number === 1) {
       updatedInventory = state.inventory.filter((item) => {
         return item.id !== action.item.id;

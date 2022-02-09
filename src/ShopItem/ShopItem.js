@@ -14,6 +14,7 @@ const ShopItem = (props) => {
     name: props.item.name,
     cost: props.item.cost,
     weight: props.item.weight,
+    trueWeight: props.item.trueWeight,
     gpValue: props.item.gpValue,
     number: number,
   };

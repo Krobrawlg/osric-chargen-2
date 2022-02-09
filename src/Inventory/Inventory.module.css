@@ -1,4 +1,6 @@
 .item-list {
+  margin-top: 0;
+  margin-right: 0;
   width: 50%;
   height: 30em;
   overflow-y: auto;
