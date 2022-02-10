@@ -50,6 +50,23 @@ Customize:
 Once the stats are rolled in order, you can click on two stats to switch their values.
 This allows you to make the kind of character you want to play.
 
+Race, Class, and Inventory
+--------------------------------------------------------------
+Next, choose your character's race, class, and purchase equipment for your character.
+The data for these options is stored on a MongoDB Atlas NoSQL database. The app fetches this data through expressJS routing.
+
+##Inventory
+
+Your character has a certain number of "Gold Pieces" (GP) to purchase items with randomly determined based on their character class. 
+Fantasy currency has three denominations:
+
+- Gold Pieces (GP) ... Value in GP 1:1
+- Silver Pieces (SP) ... Value in GP 1:10
+- Copper Pieces (CP) ... Value in GP 1:100
+
+The app keeps track of your character's remaining GP as well as the total weight of their equipment.
+
+
 License Information:
 --------------------------------------------------------------
 
