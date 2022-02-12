@@ -52,7 +52,10 @@ const Weaponsmith = (props) => {
         trueWeight: trueWeight,
       };
     });
-    setWeaponItems(modifiedWeaponArray);
+    const sortedArray = modifiedWeaponArray.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    setWeaponItems(sortedArray);
   }, []);
 
   const { sendRequest: getWeapons } = useFetchData("weapons", modifyWeaponList);
@@ -70,12 +73,12 @@ const Weaponsmith = (props) => {
       <div className={classes["item-list-container"]}>
         <ShopDisplay items={weaponItems} exit={props.exit} />
         <Inventory />
-        <footer>
-          <button onClick={props.exit} className={classes["footer-button"]}>
-            Exit
-          </button>
-        </footer>
       </div>
+      <footer>
+        <button onClick={props.exit} className={classes["footer-button"]}>
+          Exit
+        </button>
+      </footer>
     </div>
   );
 };

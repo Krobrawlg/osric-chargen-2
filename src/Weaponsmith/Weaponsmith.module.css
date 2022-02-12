@@ -10,3 +10,21 @@
 .item-list-container {
   display: flex;
 }
+
+.footer-button {
+  width: 60%;
+  color: goldenrod;
+  border-color: goldenrod;
+  background-color: black;
+  margin-top: 2em;
+  height: 2.5em;
+  border-width: 0.25em;
+  font: inherit;
+  font-weight: bold;
+}
+
+.footer-button:hover {
+  color: yellow;
+  border-color: yellow;
+  cursor: pointer;
+}

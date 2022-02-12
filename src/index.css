@@ -24,7 +24,6 @@ code {
   position: fixed;
   display: inline-block;
   height: 100vh;
-  z-index: 1;
   opacity: 0.75;
 }
 
@@ -34,6 +33,9 @@ code {
 
 .img.right {
   right: 0;
+}
+
+.flipped {
   transform: scaleX(-1);
 }
 

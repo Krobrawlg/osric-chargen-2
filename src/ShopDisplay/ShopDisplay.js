@@ -23,9 +23,6 @@ const ShopDisplay = (props) => {
 
   return (
     <>
-      {/* <h1>{props.shopName}</h1>
-      <h2>You have {Math.round(invCtx.gold * 100) / 100} GP</h2>{" "} */}
-      {/* <div className={classes["item-list-container"]}> */}
       <div className={classes["shop-item-list"]}>
         <table className={classes["item-table"]}>
           <thead className={classes["table-header"]}>
@@ -44,14 +41,12 @@ const ShopDisplay = (props) => {
               <th>Cost</th>
               <th>Weight</th>
               <th>Number</th>
-              <th></th>
               <th className={classes["empty-th"]}></th>
             </tr>
           </thead>
           <tbody>{shopContents}</tbody>
         </table>
       </div>
-      {/* </div> */}
     </>
   );
 };

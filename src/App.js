@@ -10,7 +10,7 @@ function App() {
         alt="samurai_stabs_monstrous_salamander"
       />
       <img
-        className="img right"
+        className="img right flipped"
         src="/firesmite.jpg"
         alt="ghost_samurai_smites_murderer"
       />

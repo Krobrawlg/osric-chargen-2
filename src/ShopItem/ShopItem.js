@@ -63,7 +63,6 @@ const ShopItem = (props) => {
               value={number}
             />
           </td>
-          <td />
         </>
       )}
       <td>

@@ -52,7 +52,10 @@ const Armourer = (props) => {
         trueWeight: trueWeight,
       };
     });
-    setArmourItems(modifiedArmourArray);
+    const sortedArray = modifiedArmourArray.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    setArmourItems(sortedArray);
   }, []);
 
   const { sendRequest: getArmour } = useFetchData("armour", modifyArmourList);
@@ -74,12 +77,12 @@ const Armourer = (props) => {
           exit={props.exit}
         />
         <Inventory />
-        <footer>
-          <button onClick={props.exit} className={classes["footer-button"]}>
-            Exit
-          </button>
-        </footer>
       </div>
+      <footer>
+        <button onClick={props.exit} className={classes["footer-button"]}>
+          Exit
+        </button>
+      </footer>
     </div>
   );
 };

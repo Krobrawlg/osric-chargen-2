@@ -7,16 +7,29 @@
   overflow-x: auto;
 }
 
+.h3 {
+  width: 100%;
+  background-color: black;
+  padding: 1em;
+}
+
 .item-table {
+  table-layout: fixed;
   color: goldenrod;
   margin-bottom: 50px;
   width: 100%;
+  border-collapse: collapse;
 }
 
 .table-header {
   position: sticky;
   top: 0;
   background: black;
+  font-size: large;
+  font-weight: bold;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .weight-display {

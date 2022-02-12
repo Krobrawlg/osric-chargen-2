@@ -4,6 +4,7 @@ const CharContext = React.createContext({
   generateStats: () => {},
   numberOfDice: 3,
   stats: [{}],
+  setStats: () => {},
   charClass: null,
   race: null,
   setRace: () => {},
@@ -19,6 +20,8 @@ const CharContext = React.createContext({
   originStatSelected: false,
   customizeCharacter: false,
   setCustomizeCharacter: () => [],
+  characterName: null,
+  setCharacterName: () => {},
 });
 
 export const CharContextProvider = (props) => {
@@ -27,6 +30,7 @@ export const CharContextProvider = (props) => {
   const [job, setJob] = useState(null);
   const [gold, setGold] = useState(0);
   const [inventory, setInventory] = useState([]);
+  const [characterName, setCharacterName] = useState(null);
   const [numberOfDice, setNumberOfDice] = useState(3);
   const [removeLowestRoll, setRemoveLowestRoll] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -124,6 +128,7 @@ export const CharContextProvider = (props) => {
     <CharContext.Provider
       value={{
         stats,
+        setStats,
         generateStats,
         setNumberOfDice,
         isLoading,
@@ -144,6 +149,8 @@ export const CharContextProvider = (props) => {
         originStatSelected,
         customizeCharacter,
         setCustomizeCharacter,
+        characterName,
+        setCharacterName,
       }}
     >
       {props.children}
