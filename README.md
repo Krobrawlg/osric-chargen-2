@@ -84,7 +84,7 @@ Once you have picked at least one piece of equipment, a **Finalize Character** b
 ### Character Sheet:
 Here you can review your character's information then click **save character** to save your character to the Mongo DB database.
 
-###Exit
+#### Exit:
 Resets the application. If you saved your character, you can now see them on the list of characters by clicking the **Saved Characters** button.
 
 
