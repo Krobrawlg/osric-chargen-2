@@ -70,13 +70,13 @@ The app keeps track of your character's remaining GP as well as the total weight
 
 Purchase equipment and tools to help your character survive in the wilderness or overcome a dungeon's perils.
      
-- Armourer
+- ### Armourer
 Sells armor.
      
-- Weaponsmith
+- ### Weaponsmith
 Sells close-quarters weapons.
      
-- Bowyer
+- ### Bowyer
 Sells ranged weapons.
 
 
