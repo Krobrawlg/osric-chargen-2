@@ -24,13 +24,13 @@ A higher number means a character is more endowed with a particular attribute.
 
 In this program, there are two "dice roll" settings to choose from.
 
-3d6:
+### 3d6:
 
 "Roll three six-sided dice."
 
 This is the hardcore setting, resulting in regular joes with more "average" attributes.
 
-4d6 Drop Lowest:
+### 4d6 Drop Lowest:
 
 "Roll four six-sided dice, remove the lowest roll."
 
@@ -40,12 +40,12 @@ This method results in stronger-than-average characters.
 Stat Distribution
 --------------------------------------------------------------
 
-Down the line:
+### Down the line:
 
 Stats are generated in order STR, DEX, CON, INT, WIS, CHA, and cannot be swapped around.
 This method compels you to create a character based on the stats you roll.
 
-Customize:
+### Customize:
 
 Once the stats are rolled in order, you can click on two stats to switch their values.
 This allows you to make the kind of character you want to play.
@@ -55,7 +55,7 @@ Race, Class, and Inventory
 Next, choose your character's race, class, and purchase equipment for your character.
 The data for these options is stored on a MongoDB Atlas NoSQL database. The app fetches this data through expressJS routing.
 
-- ## Inventory
+## Inventory:
 
 Your character has a certain number of "Gold Pieces" (GP) to purchase items with randomly determined based on their character class. 
 Fantasy currency has three denominations:
@@ -66,17 +66,17 @@ Fantasy currency has three denominations:
 
 The app keeps track of your character's remaining GP as well as the total weight of their equipment.
 
-- ### General Store
+### General Store:
 
 Purchase equipment and tools to help your character survive in the wilderness or overcome a dungeon's perils.
      
-- ### Armourer
+### Armourer:
 Sells armor.
      
-- ### Weaponsmith
+### Weaponsmith:
 Sells close-quarters weapons.
      
-- ### Bowyer
+### Bowyer:
 Sells ranged weapons.
 
 
