@@ -100,3 +100,13 @@ Images:
 Hangami Danjo-no-jo Arakage killing a giant salamander in the Tontagawa River in the Province of Izumo; Utagawa Kuniyoshi
 
 Akugenda Yoshihira, returning as a ghost, executes vengeance with a thunderbolt on his slayer, Namba Jiro; Utagawa Kuniyoshi
+
+Takeuchi-no-sukune looking over the side of his ship, being offered two magic jewels, senju and manju, by the Dragon King; Utagawa Kuniyoshi
+
+Honcho musha kagami Kintaro seizing Raijin the thundergod; Utagawa Kuniyoshi
+
+Honcho musha kagami (Mirror of Warriors of Our Country) Iga Jutaro, his knee on a statue's head, reading a scroll; the witch Takiyashi-hime, holding a sword; Utagawa Kuniyoshi
+
+Tawara Toda Hidesato escorted through the waves on the back of a giant turtle by the Dragon King's fishy retainers, having received the Three Gifts; Utagawa Kuniyoshi
+
+Descriptions taken from monsterbrains.blogspot.com
