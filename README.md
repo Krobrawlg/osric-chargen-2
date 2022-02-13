@@ -55,7 +55,7 @@ Race, Class, and Inventory
 Next, choose your character's race, class, and purchase equipment for your character.
 The data for these options is stored on a MongoDB Atlas NoSQL database. The app fetches this data through expressJS routing.
 
-##Inventory
+## Inventory
 
 Your character has a certain number of "Gold Pieces" (GP) to purchase items with randomly determined based on their character class. 
 Fantasy currency has three denominations:
