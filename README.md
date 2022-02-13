@@ -66,17 +66,18 @@ Fantasy currency has three denominations:
 
 The app keeps track of your character's remaining GP as well as the total weight of their equipment.
 
-     - ### General Store
-     Purchase equipment and tools to help your character survive in the wilderness or overcome a dungeon's perils.
+- General Store
+
+Purchase equipment and tools to help your character survive in the wilderness or overcome a dungeon's perils.
      
-     - ### Armourer
-     Sells armor.
+- Armourer
+Sells armor.
      
-     - ### Weaponsmith
-     Sells close-quarters weapons.
+- Weaponsmith
+Sells close-quarters weapons.
      
-     - ### Bowyer
-     Sells ranged weapons.
+- Bowyer
+Sells ranged weapons.
 
 
 License Information:
