@@ -1,0 +1,61 @@
+.background {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.container {
+  width: 40rem;
+  height: 100%;
+  display: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  z-index: 2;
+}
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30rem;
+}
+
+.img {
+  position: fixed;
+  display: inline-block;
+  height: 100vh;
+  opacity: 0.75;
+}
+
+.img.left {
+  left: 0;
+}
+
+.img.right {
+  right: 0;
+}
+
+.button {
+  background-color: black;
+  color: goldenrod;
+  border-color: goldenrod;
+  border-width: 0.25rem;
+}
+
+.button:hover {
+  color: yellow;
+  border-color: yellow;
+  font-weight: bold;
+}
+
+.row:hover {
+  background-color: goldenrod;
+  color: black;
+}

@@ -4,7 +4,7 @@ import CharContext from "../Store/char-context";
 
 import classes from "./StatGenerator.module.css";
 
-const StatGenerator = () => {
+const StatGenerator = (props) => {
   const ctx = useContext(CharContext);
 
   const genStatHandler = (event) => {
@@ -93,11 +93,11 @@ const StatGenerator = () => {
             Custom
           </label>
         </div>
-        {!ctx.isLoading && (
-          <button className={classes.button}>Roll up a Character</button>
-        )}
-        {ctx.isLoading && <p>Rolling...</p>}
+        <button className={classes.button}>Roll up a Character</button>
       </form>
+      <button className={classes.button} onClick={props.openCharacterList}>
+        Saved Characters
+      </button>
     </div>
   );
 };

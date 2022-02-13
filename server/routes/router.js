@@ -89,6 +89,17 @@ osricRoutes.route("/characters/add").post(function (req, response) {
     });
 });
 
+osricRoutes.route("/characters").get(function (req, res) {
+  let db_connect = dbo.getDb("characters");
+  db_connect
+    .collection("characters")
+    .find({})
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 osricRoutes.route("/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let deleteCharacter = { _id: ObjectId(req.params.id) };

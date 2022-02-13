@@ -36,7 +36,6 @@ export const CharContextProvider = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [selectionWindowOpen, setSelectionWindowOpen] = useState(false);
 
-  //re-factor die management into seperate hook
   const rollDie = (maxNumOnDie) => {
     const minNumOnDie = 1;
     const dieRoll = Math.floor(Math.random() * maxNumOnDie + minNumOnDie);
