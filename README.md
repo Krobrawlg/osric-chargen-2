@@ -2,6 +2,9 @@
 
 A character generator based on the fantasy tabletop role-playing game OSRIC.
 
+![](https://github.com/Krobrawlg/osric-chargen-2/osric-demo-gif.gif)
+
+
 ## Built With:
 - React
 - Express.js
