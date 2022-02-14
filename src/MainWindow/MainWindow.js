@@ -8,8 +8,6 @@ import CharSelection from "../CharSelection/CharSelection";
 import CharacterSheet from "../CharacterSheet/CharacterSheet";
 import CharacterList from "../CharacterList/CharacterList";
 
-import Button from "../UI/Button/Button";
-
 import classes from "./MainWindow.module.css";
 
 const MainWindow = () => {
