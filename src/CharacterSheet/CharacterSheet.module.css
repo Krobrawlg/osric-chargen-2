@@ -109,6 +109,15 @@
   font-weight: bold;
 }
 
+.disable {
+  border-color: gray;
+  color: gray;
+}
+
+.disable:hover {
+  border-color: gray;
+  color: gray;
+}
 .exit {
   display: block;
   padding: 1rem;

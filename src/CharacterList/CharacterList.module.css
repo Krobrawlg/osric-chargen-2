@@ -16,6 +16,7 @@
   margin-right: auto;
   background-color: black;
   z-index: 2;
+  overflow-y: auto;
 }
 
 .table {

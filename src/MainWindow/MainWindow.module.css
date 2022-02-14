@@ -23,3 +23,29 @@
 .header.logo {
   padding: 5em;
 }
+
+.button {
+  border-color: goldenrod;
+  color: goldenrod;
+  background-color: black;
+  margin-top: 3vh;
+  margin-left: 1.5vh;
+  margin-right: 1.5vh;
+  height: fit-content;
+  width: 20vh;
+  border-radius: 10px;
+  border-width: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.button:hover {
+  border-color: yellow;
+  color: yellow;
+}
+
+.button:disabled {
+  border-color: gray;
+  color: gray;
+}

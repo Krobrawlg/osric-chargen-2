@@ -18,3 +18,8 @@
   border-color: yellow;
   color: yellow;
 }
+
+.button:disabled {
+  border-color: gray;
+  color: gray;
+}

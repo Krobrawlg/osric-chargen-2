@@ -1,5 +1,4 @@
 import { useContext, useRef, useState } from "react";
-// import { useNavigate } from "react-router";
 
 import classes from "./CharacterSheet.module.css";
 
@@ -84,6 +83,8 @@ const CharacterSheet = (props) => {
   ));
 
   // const navigate = useNavigate();
+  const [characterSaved, setCharacterSaved] = useState(false);
+
   async function saveCharacterToDb() {
     const newCharacter = { ...character };
     console.log(character);
@@ -95,10 +96,18 @@ const CharacterSheet = (props) => {
         accept: "application/json",
       },
       body: JSON.stringify(newCharacter),
-    }).catch((error) => {
-      window.alert(error);
-      return;
-    });
+    })
+      .then(setCharacterSaved(true))
+      .catch((error) => {
+        window.alert(error);
+        return;
+      });
+  }
+
+  let saveButtonClasses = `${classes.button} ${classes.save}`;
+
+  if (characterSaved) {
+    saveButtonClasses += ` ${classes.disable}`;
   }
 
   return (
@@ -117,6 +126,7 @@ const CharacterSheet = (props) => {
         <h1>Character Sheet</h1>
         {nameDisplay}
         <h1>{classRace}</h1>
+        {characterSaved && <h2>Character Saved</h2>}
         <div className={classes["stat-block-list"]}>{statBlocks}</div>
 
         <h3 className={classes["inventory-label"]}>Inventory</h3>
@@ -132,8 +142,9 @@ const CharacterSheet = (props) => {
           <tbody className={classes["table-body"]}>{inventoryDisplay}</tbody>
         </table>
         <button
-          className={`${classes.button} ${classes.save}`}
+          className={saveButtonClasses}
           onClick={saveCharacterToDb}
+          disabled={characterSaved}
         >
           Save Character
         </button>

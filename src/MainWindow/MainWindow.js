@@ -35,11 +35,15 @@ const MainWindow = () => {
     <div className={classes.mainbox}>
       <header className={classes.header}>
         <h1 className={classes.h1}>OSRIC</h1>
-        {characterReady && (
-          <Button
-            label={"Finalize Character"}
-            clickHandler={openCharacterSheet}
-          />
+
+        {ctx.selectionWindowOpen && (
+          <button
+            className={classes.button}
+            onClick={openCharacterSheet}
+            disabled={!characterReady}
+          >
+            Finalize Character
+          </button>
         )}
         {characterSheetOpen && (
           <CharacterSheet exitHandler={exitResetHandler} />
