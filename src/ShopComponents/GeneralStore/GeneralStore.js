@@ -1,21 +1,20 @@
 import { useState, useCallback, useEffect, useContext } from "react";
 
-import classes from "./Armourer.module.css";
+import classes from "./GeneralStore.module.css";
 
 import ShopDisplay from "../ShopDisplay/ShopDisplay";
 import Inventory from "../Inventory/Inventory";
 
-import useFetchData from "../hooks/use-fetch-data";
+import InvContext from "../../Store/inv-context";
 
-import InvContext from "../Store/inv-context";
+import useFetchData from "../../hooks/use-fetch-data";
 
-const Armourer = (props) => {
-  const [armourItems, setArmourItems] = useState([]);
+const GeneralStore = (props) => {
+  const [generalStoreItems, setGeneralStoreItems] = useState([]);
 
-  const modifyArmourList = useCallback((armourArray) => {
-    //make this a hook?
-    const modifiedArmourArray = armourArray.map((armour) => {
-      const splitCost = armour.cost.split(" ");
+  const modifyItemArray = useCallback((itemArray) => {
+    const modifiedItemArray = itemArray.map((item) => {
+      const splitCost = item.cost.split(" ");
       const coinUnit = splitCost[1];
       const numOfCoins = splitCost[0];
       let changeRate;
@@ -31,8 +30,7 @@ const Armourer = (props) => {
 
       let trueWeight;
 
-      const weightValue = armour[`encumbrance*`];
-      console.log(weightValue);
+      const weightValue = item.weight;
       const weightString = weightValue.toString();
       const splitWeight = weightString.split(" ");
       const splitValue = splitWeight[0];
@@ -43,39 +41,41 @@ const Armourer = (props) => {
       } else {
         trueWeight = 0;
       }
+
+      console.log(trueWeight);
+
       return {
-        id: armour._id,
-        name: armour.armour,
-        cost: armour.cost,
-        weight: armour[`encumbrance*`],
+        id: item._id,
+        name: item.Item,
+        cost: item.cost,
+        weight: item.weight,
         gpValue: numOfCoins * changeRate,
         trueWeight: trueWeight,
       };
     });
-    const sortedArray = modifiedArmourArray.sort((a, b) =>
+    const sortedArray = modifiedItemArray.sort((a, b) =>
       a.name.localeCompare(b.name)
     );
-    setArmourItems(sortedArray);
+    setGeneralStoreItems(sortedArray);
   }, []);
 
-  const { sendRequest: getArmour } = useFetchData("armour", modifyArmourList);
+  const { sendRequest: getItems } = useFetchData(
+    "generalStore",
+    modifyItemArray
+  );
 
   useEffect(() => {
-    getArmour();
-  }, [getArmour]);
+    getItems();
+  }, [getItems]);
 
   const invCtx = useContext(InvContext);
 
   return (
     <div className={classes.background}>
-      <h1>Armourer</h1>
+      <h1>General Store</h1>
       <h2>You have {Math.round(invCtx.gold * 100) / 100} GP</h2>
       <div className={classes["item-list-container"]}>
-        <ShopDisplay
-          shopName={"Armourer"}
-          items={armourItems}
-          exit={props.exit}
-        />
+        <ShopDisplay exit={props.exit} items={generalStoreItems} />
         <Inventory />
       </div>
       <footer>
@@ -87,4 +87,4 @@ const Armourer = (props) => {
   );
 };
 
-export default Armourer;
+export default GeneralStore;

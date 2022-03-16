@@ -1,20 +1,21 @@
 import { useState, useCallback, useEffect, useContext } from "react";
 
-import classes from "./GeneralStore.module.css";
+import classes from "./Bowyer.module.css";
 
 import ShopDisplay from "../ShopDisplay/ShopDisplay";
 import Inventory from "../Inventory/Inventory";
 
-import InvContext from "../Store/inv-context";
+import useFetchData from "../../hooks/use-fetch-data";
 
-import useFetchData from "../hooks/use-fetch-data";
+import InvContext from "../../Store/inv-context";
 
-const GeneralStore = (props) => {
-  const [generalStoreItems, setGeneralStoreItems] = useState([]);
+const Bowyer = (props) => {
+  const [missileItems, setmissileItems] = useState([]);
 
-  const modifyItemArray = useCallback((itemArray) => {
-    const modifiedItemArray = itemArray.map((item) => {
-      const splitCost = item.cost.split(" ");
+  const modifyMissileList = useCallback((missileArray) => {
+    //make this a hook?
+    const modifiedMissileArray = missileArray.map((missile) => {
+      const splitCost = missile.cost.split(" ");
       const coinUnit = splitCost[1];
       const numOfCoins = splitCost[0];
       let changeRate;
@@ -30,7 +31,8 @@ const GeneralStore = (props) => {
 
       let trueWeight;
 
-      const weightValue = item.weight;
+      const weightValue = missile.encumbrance;
+      console.log(weightValue);
       const weightString = weightValue.toString();
       const splitWeight = weightString.split(" ");
       const splitValue = splitWeight[0];
@@ -42,40 +44,39 @@ const GeneralStore = (props) => {
         trueWeight = 0;
       }
 
-      console.log(trueWeight);
-
+      console.log(missile[`weapon type`]);
       return {
-        id: item._id,
-        name: item.Item,
-        cost: item.cost,
-        weight: item.weight,
+        id: missile._id,
+        name: missile[`weapon type`],
+        cost: missile.cost,
+        weight: missile.encumbrance,
         gpValue: numOfCoins * changeRate,
         trueWeight: trueWeight,
       };
     });
-    const sortedArray = modifiedItemArray.sort((a, b) =>
+    const sortedArray = modifiedMissileArray.sort((a, b) =>
       a.name.localeCompare(b.name)
     );
-    setGeneralStoreItems(sortedArray);
+    setmissileItems(sortedArray);
   }, []);
 
-  const { sendRequest: getItems } = useFetchData(
-    "generalStore",
-    modifyItemArray
+  const { sendRequest: getmissiles } = useFetchData(
+    "missileWeapons",
+    modifyMissileList
   );
 
   useEffect(() => {
-    getItems();
-  }, [getItems]);
+    getmissiles();
+  }, [getmissiles]);
 
   const invCtx = useContext(InvContext);
 
   return (
     <div className={classes.background}>
-      <h1>General Store</h1>
+      <h1>Bowyer</h1>
       <h2>You have {Math.round(invCtx.gold * 100) / 100} GP</h2>
       <div className={classes["item-list-container"]}>
-        <ShopDisplay exit={props.exit} items={generalStoreItems} />
+        <ShopDisplay items={missileItems} exit={props.exit} />
         <Inventory />
       </div>
       <footer>
@@ -86,5 +87,4 @@ const GeneralStore = (props) => {
     </div>
   );
 };
-
-export default GeneralStore;
+export default Bowyer;

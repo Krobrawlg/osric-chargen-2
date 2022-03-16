@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 
 import classes from "./StatBox.module.css";
 
-import CharContext from "../Store/char-context";
+import CharContext from "../../Store/char-context";
 
 const StatBox = (props) => {
   // let statBoxClasses;

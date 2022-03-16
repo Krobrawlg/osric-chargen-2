@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 
-import CharContext from "../Store/char-context";
+import CharContext from "../../Store/char-context";
 import StatBox from "../StatBox/StatBox";
 import RaceSelectScreen from "../RaceSelectScreen/RaceSelectScreen";
 import ClassSelectScreen from "../ClassSelectScreen/ClassSelecScreen";
-import Shops from "../Shops/Shops";
+import Shops from "../../ShopComponents/Shops/Shops";
 
-import Button from "../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 
 import classes from "./CharSelection.module.css";
 

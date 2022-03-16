@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CharContext from "../Store/char-context";
+import CharContext from "../../Store/char-context";
 
 import classes from "./SubStatBlock.module.css";
 

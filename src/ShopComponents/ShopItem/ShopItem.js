@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 
 import classes from "./ShopItem.module.css";
 
-import InvContext from "../Store/inv-context";
+import InvContext from "../../Store/inv-context";
 
 const ShopItem = (props) => {
   const [number, setNumber] = useState(1);

@@ -5,7 +5,7 @@ import classes from "./CharacterSheet.module.css";
 import CharContext from "../Store/char-context";
 import InvContext from "../Store/inv-context";
 
-import StatBox from "../StatBox/StatBox";
+import StatBox from "../CharacterInformationComponents/StatBox/StatBox";
 
 const CharacterSheet = (props) => {
   const ctx = useContext(CharContext);

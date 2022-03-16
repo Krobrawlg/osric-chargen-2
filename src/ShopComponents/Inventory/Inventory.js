@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import ShopItem from "../ShopItem/ShopItem.js";
 
-import InvContext from "../Store/inv-context";
+import InvContext from "../../Store/inv-context";
 
 import classes from "./Inventory.module.css";
 

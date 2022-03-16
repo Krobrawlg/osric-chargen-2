@@ -4,11 +4,11 @@ import GeneralStore from "../GeneralStore/GeneralStore";
 import Armourer from "../Armourer/Armourer";
 import Weaponsmith from "../Weaponsmith/Weaponsmith";
 import Bowyer from "../Bowyer/Bowyer";
-import SubStatBlock from "../SubStatBlock/SubStatBlock";
+import SubStatBlock from "../../CharacterInformationComponents/SubStatBlock/SubStatBlock";
 
-import Button from "../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 
-import InvContext from "../Store/inv-context";
+import InvContext from "../../Store/inv-context";
 const Shops = () => {
   const [generalStoreOpen, setGeneralStoreOpen] = useState(false);
   const [armourerOpen, setArmourerOpen] = useState(false);

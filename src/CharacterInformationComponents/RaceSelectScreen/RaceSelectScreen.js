@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 
-import SelectionBox from "../SelectionBox/SelectionBox";
+import SelectionBox from "../../UI/SelectionBox/SelectionBox";
 import SubStatBlock from "../SubStatBlock/SubStatBlock";
 
-import CharContext from "../Store/char-context";
+import CharContext from "../../Store/char-context";
 
 import classes from "./RaceSelectScreen.module.css";
 
-import useFetchData from "../hooks/use-fetch-data";
+import useFetchData from "../../hooks/use-fetch-data";
 
 const RaceSelectScreen = (props) => {
   const [races, setRaces] = useState([]);

@@ -2,11 +2,11 @@ import { useState, useEffect, useContext } from "react";
 
 import classes from "./ClassSelectScreen.module.css";
 
-import useFetchData from "../hooks/use-fetch-data";
+import useFetchData from "../../hooks/use-fetch-data";
 
-import CharContext from "../Store/char-context";
+import CharContext from "../../Store/char-context";
 
-import SelectionBox from "../SelectionBox/SelectionBox";
+import SelectionBox from "../../UI/SelectionBox/SelectionBox";
 import SubStatBlock from "../SubStatBlock/SubStatBlock";
 
 const ClassSelectScreen = (props) => {

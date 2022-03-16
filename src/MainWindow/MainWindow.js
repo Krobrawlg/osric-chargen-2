@@ -3,8 +3,8 @@ import React, { useContext, useState } from "react";
 import CharContext from "../Store/char-context";
 import InvContext from "../Store/inv-context";
 
-import StatGenerator from "../StatGenerator/StatGenerator";
-import CharSelection from "../CharSelection/CharSelection";
+import StatGenerator from "../CharacterInformationComponents/StatGenerator/StatGenerator";
+import CharSelection from "../CharacterInformationComponents/CharSelection/CharSelection";
 import CharacterSheet from "../CharacterSheet/CharacterSheet";
 import CharacterList from "../CharacterList/CharacterList";
 
