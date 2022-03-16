@@ -2,6 +2,11 @@
 
 A character generator based on the fantasy tabletop role-playing game OSRIC.
 
+![osric-demo-gif](https://user-images.githubusercontent.com/31605814/153881004-9acc7067-f50f-4304-bd1c-2e7a90cbf5b0.gif)
+
+![osric-gif-2](https://user-images.githubusercontent.com/31605814/153888063-e3b2971d-a942-4837-9260-e3dc4b20be15.gif)
+
+
 ## Built With:
 - React
 - Express.js
